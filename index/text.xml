@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="style.xsl"?>
+
+<library>
+  <book>
+    <title>1984</title>
+    <author>George Orwell</author>
+    <year>1949</year>
+  </book>
+  <book>
+    <title>Brave New World</title>
+    <author>Aldous Huxley</author>
+    <year>1932</year>
+  </book>
+  <book>
+    <title>Fahrenheit 451</title>
+    <author>Ray Bradbury</author>
+    <year>1953</year>
+  </book>
+</library>

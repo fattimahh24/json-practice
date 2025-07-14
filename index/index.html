@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta tittle="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product Cards</title>
+  <style>
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      gap: 20px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+#container{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+    .card {
+      width: 220px;
+      padding: 20px;
+      border-radius: 8px;
+      background-color: #111;
+      color: white;
+      box-shadow: 0 4px 8px rgb(0 0 0 / 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgb(0 0 0 / 0.5);
+    }
+
+    .card h1 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+      line-height: 1.3;
+    }
+
+    .card h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #4caf50; /* green price */
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="filter('all')">All</button>
+  <button onclick="filter('choclate')">Choclates Cakes</button>
+  <button onclick="filter('vanilla')">Vanilla Cakes</button>
+  <button onclick="filter('berry')">Berry Cakes</button>
+  <div id="container"></div>
+
+  <script>
+const cardsData = [
+  // 🍫 Chocolate Cakes
+  { tittle: "Classic Chocolate Cake", description: "Rich and moist dark chocolate cake", price: 24.99, category: "choclate" },
+  { tittle: "Chocolate Fudge Cake", description: "Layered cake with creamy chocolate fudge", price: 29.99, category: "choclate "},
+  { tittle: "German Chocolate Cake", description: "Coconut-pecan frosting on chocolate layers", price: 34.50, category: "choclate" },
+  { tittle: "Chocolate Lava Cake", description: "Warm cake with a gooey chocolate center", price: 19.99, category: "choclate" },
+  { tittle: "Chocolate Hazelnut Cake", description: "Nutty delight with chocolate ganache", price: 27.75, category: "choclate" },
+
+  // 🍦 Vanilla Cakes
+  { tittle: "Vanilla Bean Cake", description: "Classic cake made with real vanilla beans", price: 22.00, category: "vanilla" },
+  { tittle: "Vanilla Almond Cake", description: "Soft vanilla sponge with almond cream", price: 25.50, category: "vanilla" },
+  { tittle: "Vanilla Buttercream Cake", description: "Smooth buttercream frosting on vanilla layers", price: 23.99, category: "vanilla" },
+  { tittle: "Vanilla Confetti Cake", description: "Vanilla cake with colorful sprinkles inside", price: 21.99, category: "vanilla" },
+  { tittle: "Vanilla Strawberry Cream Cake", description: "Vanilla cake filled with whipped cream and strawberries", price: 26.50, category: "vanilla" },
+
+  // 🍓 Berry Cakes
+  { tittle: "Strawberry Shortcake", description: "Fresh strawberries and cream over sponge cake", price: 24.25, category: "berry" },
+  { tittle: "Blueberry Cheesecake", description: "Creamy cheesecake with blueberry topping", price: 28.99, category: "berry"  },
+  { tittle: "Raspberry Chocolate Cake", description: "Decadent chocolate cake with raspberry filling", price: 30.00, category: "berry"  },
+  { tittle: "Mixed Berry Tart Cake", description: "Berry medley with vanilla custard on sponge base", price: 27.50, category: "berry"  }
+];
+
+
+
+const container = document.getElementById('container');
+    function displaycard(cards){
+    let cardhtml = '';
+
+    for (let i = 0; i < cards.length; i++) {
+      const card = cards[i];
+      cardhtml += `
+        <div class="card">
+          <img src="${card.img}" alt="${card.title}" />
+          <h1>${card.tittle}</h1>
+          <p>${card.description}</p>
+          <h2>$${card.price}</h2>
+        </div>
+      `;
+    }
+
+    container.innerHTML = cardhtml;
+}
+
+
+displaycard(cardsData);
+
+function filter(category){
+    if(category == "all"){
+        displaycard(cardsData); 
+    }
+    else{
+       filteredCards = cardsData.filter(card => card.category === category);
+        displaycard(filteredCards);
+    }
+
+}
+  
+  </script>
+</body>
+</html>
